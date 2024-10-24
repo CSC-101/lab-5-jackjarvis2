@@ -1,18 +1,26 @@
 import math
 from typing import Any
 
-
 # Representation of time as hours, minutes, and seconds
 class Time:
-    # Initialize a new Point object.
-    # input: hour as an int
-    # input: minute as an int
-    # input: second as an int
+    # Initialize a new Time object.
     def __init__(self, hour: int, minute: int, second: int):
         self.hour = hour
         self.minute = minute
         self.second = second
 
+    def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, Time):
+            return False
+        return (self.hour == other.hour and
+                self.minute == other.minute and
+                self.second == other.second)
+
+    def __repr__(self) -> str:
+        return f'Time({self.hour}, {self.minute}, {self.second})'
+
+    def __str__(self) -> str:
+        return f"{self.hour:02}:{self.minute:02}:{self.second:02}"
 
     # Provide a developer-friendly string representation of the object.
     # input: Time for which a string representation is desired. 
